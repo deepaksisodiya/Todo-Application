@@ -1,0 +1,20 @@
+{
+  "name": "Todo Application",
+  "version": "0.0.0",
+  "homepage": "https://github.com/deepaksisodiya/JS-Programs",
+  "authors": [
+    "deepak sisodiya <deepak.sisodiya@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "js-klass": "~1.0.0",
+    "jquery": "~2.1.1"
+  }
+}
