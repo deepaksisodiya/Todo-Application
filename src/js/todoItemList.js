@@ -4,10 +4,10 @@
 
 app.todoItemList = klass({
 
-	initialize : function(todosArray, completedCount, incompletedCount) {
-		this.todosArray = todosArray;
-		this.completedCount = completedCount;
-		this.incompletedCount = incompletedCount;
+	initialize : function() {
+		this.todosArray = [];
+		this.completedCount = 0;
+		this.incompletedCount = 0;
 	},
 	addTodo : function(title) {
 		var todoItemObj = new app.todoItem(title);
@@ -23,16 +23,21 @@ app.todoItemList = klass({
 		}
 	},
 	markComplete : function(index) {
-		this.todosArray[index].completed = true;
-		this.completedCount = this.completedCount + 1;
-		this.incompletedCount = this.incompletedCount - 1;
+		if(this.todosArray[index].completed === false) {
+			this.todosArray[index].setComplete();
+			this.completedCount = this.completedCount + 1;
+			this.incompletedCount = this.incompletedCount - 1;
+		}
 	},
 	markIncomplete : function(index) {
-		this.todosArray[index].completed = false;
-		this.completedCount = this.completedCount - 1;
-		this.incompletedCount = this.incompletedCount + 1;
+		if(this.todosArray[index].completed === true) {
+			this.todosArray[index].setIncomplete();
+			this.completedCount = this.completedCount - 1;
+			this.incompletedCount = this.incompletedCount + 1;
+		}
 	}
 
 });
 
-var todoItemListObj = new app.todoItemList([], 0, 0);
+var todoItemListObj = new app.todoItemList();
+todoItemListObj.addTodo("sasaas asas");

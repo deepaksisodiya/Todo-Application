@@ -7,8 +7,8 @@ var app = {};
 
 app.todoItem = klass({
 
-	initialize : function(title) {
-		this.title = title;
+	initialize : function() {
+		this.title = " ";
 		this.completed = false;
 	},
 	setComplete : function() {
@@ -20,4 +20,4 @@ app.todoItem = klass({
 
 });
 
-var todoItemObj = new app.todoItem(" ");
+var todoItemObj = new app.todoItem();
