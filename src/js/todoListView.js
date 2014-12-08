@@ -29,7 +29,9 @@ app.todoListView = BaseView.extend({
 
   onCheckBoxClick: function(e, target, dataSet) {
     if (target.checked) {
-      console.log("todo");
+      todoItemListObj.markComplete(dataSet.index);
+    } else {
+      todoItemListObj.markIncomplete(dataSet.index);
     }
   }
 

@@ -8,7 +8,7 @@
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="src/js/jquery.ba-tinypubsub.js"></script>
     <script src="src/js/BaseModel.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 
     <script type="text/html" id="todoCreaterTemplate">
@@ -23,8 +23,8 @@
         <% _.each(obj , function(item, index, array) { %>
 
             <div>
-                <input data-index="<%=index%>" type="checkbox" class="todoCheckBox">
-                <label> <%= item.title %>
+                <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
+                <label <% if(item.completed){%> class="completed" <% }%> > <%= item.title %>
                     <% if(item.completed){%>✓<% }%>
                 </label>
                 <button data-index="<%=index%>" id="remove">x</button>
@@ -34,23 +34,35 @@
 
     </script>
 
+    <script type="text/html" id="todoFooterTemplate">
+
+        <label>All</label>
+        <label id="completed">Completed</label>
+        <label>Remaining</label>
+        <label>RemoveAll</label>
+
+    </script>
+
 </head>
 <body>
 
 
-
 <header id="todoCreater">
-
 </header>
 
 <section id="todoList">
-
 </section>
+
+<footer id="todoFooter">
+</footer>
+
 
 <script src="src/js/common.js"></script>
 <script src="src/js/todoItem.js"></script>
 <script src="src/js/todoItemList.js"></script>
 <script src="src/js/todoView.js"></script>
 <script src="src/js/todoListView.js"></script>
+<script src="src/js/todoFooterView.js"></script>
+
 </body>
 </html>

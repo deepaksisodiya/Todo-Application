@@ -31,24 +31,19 @@ app.todoItemList = BaseModel.extend({
     this.incompletedCount = 0;
   },
   markComplete: function(index) {
-    if (this.isComplete(index) === false) {
+    if (this.todosArray[index].isComplete() === false) {
       this.todosArray[index].setComplete();
       this.completedCount = this.completedCount + 1;
       this.incompletedCount = this.incompletedCount - 1;
+      this.trigger("change");
     }
   },
   markIncomplete: function(index) {
-    if (this.isComplete(index) === true) {
+    if (this.todosArray[index].isComplete() === true) {
       this.todosArray[index].setIncomplete();
       this.completedCount = this.completedCount - 1;
       this.incompletedCount = this.incompletedCount + 1;
-    }
-  },
-  isComplete: function(index) {
-    if (this.todosArray[index].isComplete()) {
-      return true;
-    } else {
-      return false;
+      this.trigger("change");
     }
   },
   getTodosArray: function() {
