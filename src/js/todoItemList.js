@@ -28,17 +28,24 @@ app.todoItemList = klass({
 		this.incompletedCount = 0;
 	},
 	markComplete : function(index) {
-		if(this.todosArray[index].completed === false) {
+		if(this.isComplete(index) === false) {
 			this.todosArray[index].setComplete();
 			this.completedCount = this.completedCount + 1;
 			this.incompletedCount = this.incompletedCount - 1;
 		}
 	},
 	markIncomplete : function(index) {
-		if(this.todosArray[index].completed === true) {
+		if(this.isComplete(index) === true) {
 			this.todosArray[index].setIncomplete();
 			this.completedCount = this.completedCount - 1;
 			this.incompletedCount = this.incompletedCount + 1;
+		}
+	},
+	isComplete : function(index) {
+		if(this.todosArray[index].completed) {
+			return true;
+		}else {
+			return false;
 		}
 	}
 
