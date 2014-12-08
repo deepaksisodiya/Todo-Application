@@ -35,7 +35,7 @@ describe("#todoItemList", function() {
 	var todoItemList = app.todoItemList;
 	it("todoItemList should be function" , function() {
 		todoItemList.constructor.should.eql(Function);
-	})
+	});
 
 	it("todoItemList should return an todoItemList object", function() {
 		var x = new todoItemList();
