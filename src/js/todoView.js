@@ -3,20 +3,21 @@
  */
 
 
-app.todoView = klass({
-	initialize : function() {
-		this.loadTemplate({}, "todoCreaterTemplate", $("#toddCreater"));
-	},
+app.todoView = BaseView.extend({
 
-	loadTemplate : function(dataObj, tempId, domNode) {
-		var tempStr = $("#" + tempId).html();
-		var compileTemp = _.template(tempStr);
-		var tempHTML = compileTemp({
-			obj: dataObj
-		});
-		domNode.html(tempHTML);
-	}
+  events: {
+    "click #add": "onAddClick"
+  },
+  initialize: function($el) {
+    this.$el = $el;
+    this.addEvents();
+    this.loadTemplate({}, "todoCreaterTemplate", this.$el);
+  },
+  onAddClick: function(e, target, dataSet) {
+    var inputValue = this.$el.find("#input-todo").val();
+    todoItemListObj.addTodo(inputValue);
+  }
 
 });
 
-var todoViewObj = new app.todoView();
+var todoViewObj = new app.todoView(this.$("#todoCreater"));

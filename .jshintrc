@@ -83,8 +83,11 @@
 
   // Custom Globals
   "globals"       : {
-    "App": true,
+    "app": true,
     "klass" : true,
-    "_" : true
+    "_" : true,
+    "BaseView" : true,
+    "todoItemListObj" : true,
+    "BaseModel" : true
   }        // additional predefined global variables
 }

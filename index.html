@@ -6,6 +6,9 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/js-klass/klass.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="src/js/jquery.ba-tinypubsub.js"></script>
+    <script src="src/js/BaseModel.js"></script>
+
 
 
     <script type="text/html" id="todoCreaterTemplate">
@@ -15,20 +18,39 @@
 
     </script>
 
+    <script type="text/html" id="todoListTemplate">
+
+        <% _.each(obj , function(item, index, array) { %>
+
+            <div>
+                <input data-index="<%=index%>" type="checkbox" class="todoCheckBox">
+                <label> <%= item.title %>
+                    <% if(item.completed){%>✓<% }%>
+                </label>
+                <button data-index="<%=index%>" id="remove">x</button>
+            </div>
+
+        <% }) %>
+
+    </script>
 
 </head>
 <body>
 
-<p>My Todo Application</p>
 
 
 <header id="todoCreater">
 
 </header>
 
+<section id="todoList">
 
+</section>
+
+<script src="src/js/common.js"></script>
 <script src="src/js/todoItem.js"></script>
 <script src="src/js/todoItemList.js"></script>
 <script src="src/js/todoView.js"></script>
+<script src="src/js/todoListView.js"></script>
 </body>
 </html>

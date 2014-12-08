@@ -7,16 +7,19 @@ var app = {};
 
 app.todoItem = klass({
 
-	initialize : function(title) {
-		this.title = title;
-		this.completed = false;
-	},
-	setComplete : function() {
-		this.completed = true;
-	},
-	setIncomplete : function() {
-		this.completed = false;
-	}
+  initialize: function(title) {
+    this.title = title;
+    this.completed = false;
+  },
+  setComplete: function() {
+    this.completed = true;
+  },
+  setIncomplete: function() {
+    this.completed = false;
+  },
+  isComplete: function() {
+    return this.completed;
+  }
 
 });
 
