@@ -15,6 +15,9 @@
   ],
   "dependencies": {
     "js-klass": "~1.0.0",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "underscore": "~1.7.0",
+    "chai": "~1.10.0",
+    "mocha": "~2.0.1"
   }
 }
