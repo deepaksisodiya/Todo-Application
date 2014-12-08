@@ -22,6 +22,11 @@ app.todoItemList = klass({
 			this.incompletedCount = this.incompletedCount - 1;
 		}
 	},
+	removeAllTodo : function() {
+		this.todosArray = [];
+		this.completedCount = 0;
+		this.incompletedCount = 0;
+	},
 	markComplete : function(index) {
 		if(this.todosArray[index].completed === false) {
 			this.todosArray[index].setComplete();
@@ -40,4 +45,3 @@ app.todoItemList = klass({
 });
 
 var todoItemListObj = new app.todoItemList();
-todoItemListObj.addTodo("sasaas asas");
