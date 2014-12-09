@@ -22,7 +22,7 @@
 
         <% _.each(obj.list, function(item, index, array) { %>
 
-            <% if(obj.mode === "all" || (obj.mode === "completed" && item.completed) || (obj.mode === "incompleted" && !item.completed)) { %>
+            <% if(obj.mode === "all" || (obj.mode === "completed" && item.completed === true) || (obj.mode === "incompleted" && item.completed === false)) { %>
 
                 <div>
                     <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
@@ -67,6 +67,8 @@
 <script src="src/js/todoView.js"></script>
 <script src="src/js/todoListView.js"></script>
 <script src="src/js/todoFooterView.js"></script>
+<script src="src/js/appView.js"></script>
+
 
 </body>
 </html>

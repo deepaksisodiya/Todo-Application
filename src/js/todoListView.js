@@ -13,19 +13,26 @@ app.todoListView = BaseView.extend({
   initialize: function($el) {
     this.$el = $el;
     this.addEvents();
-    this.mode = "all";
+    if (location.hash === "") {
+      this.mode = "all";
+    } else {
+      this.mode = location.hash.slice(1);
+    }
     this.render();
     var self = this;
     todoItemListObj.on("change", function() {
       self.render();
     });
-    $(window).on("hashchange", function (e) {
+    $(window).on("hashchange", function(e) {
       self.mode = location.hash.slice(1);
       self.render();
     });
   },
   render: function() {
-    this.loadTemplate({list: todoItemListObj.getTodosArray(), mode: this.mode}, "todoListTemplate", this.$el);
+    this.loadTemplate({
+      list: todoItemListObj.getTodosArray(),
+      mode: this.mode
+    }, "todoListTemplate", this.$el);
   },
 
   onRemoveClick: function(e, target, dataSet) {
@@ -41,5 +48,3 @@ app.todoListView = BaseView.extend({
   }
 
 });
-
-var todoListViewObj = new app.todoListView($("#todoList"));

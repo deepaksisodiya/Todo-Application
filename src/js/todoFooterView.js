@@ -18,14 +18,12 @@ app.todoFooterView = BaseView.extend({
     });
   },
 
-  render : function () {
+  render: function() {
     this.loadTemplate(todoItemListObj, "todoFooterTemplate", this.$el);
   },
 
-  onRemoveAllClick :function() {
+  onRemoveAllClick: function() {
     todoItemListObj.removeAllTodo();
   }
 
 });
-
-var todoFooterViewObj = new app.todoFooterView($("#todoFooter"));

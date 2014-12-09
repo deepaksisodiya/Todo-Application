@@ -7,9 +7,14 @@ var app = {};
 
 app.todoItem = klass({
 
-  initialize: function(title) {
+  initialize: function(title, completed) {
     this.title = title;
-    this.completed = false;
+    if (completed === undefined) {
+      this.completed = false;
+    } else {
+      this.completed = completed;
+    }
+
   },
   setComplete: function() {
     this.completed = true;
@@ -23,4 +28,4 @@ app.todoItem = klass({
 
 });
 
-var todoItemObj = new app.todoItem(" ");
+

@@ -6,9 +6,13 @@ app.todoItemList = BaseModel.extend({
 
   initialize: function() {
     BaseModel.call(this);
-    this.todosArray = [];
-    this.completedCount = 0;
-    this.incompletedCount = 0;
+    this.todosArray = this.getDataFromLocalStorage();
+    this.completedCount = this.calculateCompletedCount();
+    this.incompletedCount = this.todosArray.length - this.completedCount;
+    var self = this;
+    this.on("change", function() {
+      self.setDataToLocalStorage();
+    });
   },
   addTodo: function(title) {
     var todoItemObj = new app.todoItem(title);
@@ -49,8 +53,31 @@ app.todoItemList = BaseModel.extend({
   },
   getTodosArray: function() {
     return this.todosArray;
+  },
+
+  setDataToLocalStorage: function() {
+    localStorage.setItem("localStorageTodos", JSON.stringify(this.getTodosArray()));
+  },
+
+  getDataFromLocalStorage: function() {
+    var todoArray = JSON.parse(localStorage.getItem("localStorageTodos"));
+    if (todoArray === null) {
+      todoArray = [];
+    }
+    return todoArray.map(function(v, i) {
+      return new app.todoItem(v.title, v.completed);
+    });
+  },
+
+  calculateCompletedCount: function() {
+    var data = this.todosArray;
+    var completedCount = 0;
+    for (var i = 0; i < data.length; i=i+1) {
+      if (data[i].isComplete()) {
+        completedCount = completedCount + 1;
+      }
+    }
+    return completedCount;
   }
 
 });
-
-var todoItemListObj = new app.todoItemList();

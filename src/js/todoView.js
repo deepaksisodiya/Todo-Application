@@ -19,5 +19,3 @@ app.todoView = BaseView.extend({
   }
 
 });
-
-var todoViewObj = new app.todoView(this.$("#todoCreater"));
