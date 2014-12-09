@@ -18,9 +18,13 @@ app.todoListView = BaseView.extend({
     todoItemListObj.on("change", function() {
       self.render();
     });
+    $.on("filterTodos", function(e, mode){
+      self.mode = mode;
+      self.render();
+    });
   },
   render: function() {
-    this.loadTemplate(todoItemListObj.getTodosArray(), "todoListTemplate", this.$el);
+    this.loadTemplate({list: todoItemListObj.getTodosArray(), mode: this.mode}, "todoListTemplate", this.$el);
   },
 
   onRemoveClick: function(e, target, dataSet) {

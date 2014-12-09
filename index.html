@@ -20,16 +20,47 @@
 
     <script type="text/html" id="todoListTemplate">
 
-        <% _.each(obj , function(item, index, array) { %>
+        <% _.each(obj.list, function(item, index, array) { %>
 
-            <div>
-                <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
-                <label <% if(item.completed){%> class="completed"
-                <% }%> > <%= item.title %>
+            <% if(obj.mode === "all") { %>
+
+                <div>
+                    <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
+                    <label <% if(item.completed){%> class="completed"
+                    <% }%> > <%= item.title %>
                     <% if(item.completed){%>✓<% }%>
-                </label>
-                <button data-index="<%=index%>" id="remove">x</button>
-            </div>
+                    </label>
+                    <button data-index="<%=index%>" id="remove">x</button>
+                </div>
+
+            <% } %>
+
+
+            <% if(obj.mode === "completed" && item.completed) { %>
+
+                <div>
+                    <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
+                    <label <% if(item.completed){%> class="completed"
+                    <% }%> > <%= item.title %>
+                    <% if(item.completed){%>✓<% }%>
+                    </label>
+                    <button data-index="<%=index%>" id="remove">x</button>
+                </div>
+
+            <% } %>
+
+            <% if(obj.mode === "incompleted" && !item.completed) { %>
+
+                <div>
+                    <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
+                    <label <% if(item.completed){%> class="completed"
+                    <% }%> > <%= item.title %>
+                    <% if(item.completed){%>✓<% }%>
+                    </label>
+                    <button data-index="<%=index%>" id="remove">x</button>
+                </div>
+
+            <% } %>
 
         <% }) %>
 
@@ -37,9 +68,9 @@
 
     <script type="text/html" id="todoFooterTemplate">
 
-        <label>All( <%= obj.completedCount + obj.incompletedCount %>)</label>
+        <label id="all">All( <%= obj.completedCount + obj.incompletedCount %>)</label>
         <label id="completed">Completed(<%= obj.completedCount  %>)</label>
-        <label>Remaining(<%= obj.incompletedCount  %>)</label>
+        <label id="incomplete">Remaining(<%= obj.incompletedCount  %>)</label>
         <label id="removeAll">RemoveAll</label>
 
     </script>
@@ -56,7 +87,6 @@
 
 <footer id="todoFooter">
 </footer>
-
 
 <script src="src/js/BaseView.js"></script>
 <script src="src/js/todoItem.js"></script>

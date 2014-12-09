@@ -6,15 +6,15 @@
 
   var o = $({});
 
-  $.subscribe = function() {
+  $.on = function() {
     o.on.apply(o, arguments);
   };
 
-  $.unsubscribe = function() {
+  $.off = function() {
     o.off.apply(o, arguments);
   };
 
-  $.publish = function() {
+  $.trigger = function() {
     o.trigger.apply(o, arguments);
   };
 

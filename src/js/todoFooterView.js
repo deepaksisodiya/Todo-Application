@@ -7,7 +7,9 @@ app.todoFooterView = BaseView.extend({
 
   events: {
     "click #completed": "onCompletedClick",
-    "click #removeAll": "onRemoveAllClick"
+    "click #removeAll": "onRemoveAllClick",
+    "click #incomplete": "onIncompletedClick",
+    "click #all": "onAllClick"
   },
   initialize: function($el) {
     this.$el = $el;
@@ -24,7 +26,15 @@ app.todoFooterView = BaseView.extend({
   },
 
   onCompletedClick: function() {
-    console.log("todo");
+    $.trigger("filterTodos", "completed");
+  },
+
+  onIncompletedClick : function() {
+    $.trigger("filterTodos", "incompleted");
+  },
+
+  onAllClick : function() {
+    $.trigger("filterTodos", "all");
   },
 
   onRemoveAllClick :function() {
