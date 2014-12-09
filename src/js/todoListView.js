@@ -13,6 +13,7 @@ app.todoListView = BaseView.extend({
   initialize: function($el) {
     this.$el = $el;
     this.addEvents();
+    this.mode = "all";
     this.render();
     var self = this;
     todoItemListObj.on("change", function() {

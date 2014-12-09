@@ -22,34 +22,7 @@
 
         <% _.each(obj.list, function(item, index, array) { %>
 
-            <% if(obj.mode === "all") { %>
-
-                <div>
-                    <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
-                    <label <% if(item.completed){%> class="completed"
-                    <% }%> > <%= item.title %>
-                    <% if(item.completed){%>✓<% }%>
-                    </label>
-                    <button data-index="<%=index%>" id="remove">x</button>
-                </div>
-
-            <% } %>
-
-
-            <% if(obj.mode === "completed" && item.completed) { %>
-
-                <div>
-                    <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
-                    <label <% if(item.completed){%> class="completed"
-                    <% }%> > <%= item.title %>
-                    <% if(item.completed){%>✓<% }%>
-                    </label>
-                    <button data-index="<%=index%>" id="remove">x</button>
-                </div>
-
-            <% } %>
-
-            <% if(obj.mode === "incompleted" && !item.completed) { %>
+            <% if(obj.mode === "all" || (obj.mode === "completed" && item.completed) || (obj.mode === "incompleted" && !item.completed)) { %>
 
                 <div>
                     <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
