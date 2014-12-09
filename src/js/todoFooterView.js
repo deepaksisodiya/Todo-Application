@@ -12,8 +12,17 @@ app.todoFooterView = BaseView.extend({
   initialize: function($el) {
     this.$el = $el;
     this.addEvents();
-    this.loadTemplate({}, "todoFooterTemplate", this.$el);
+    this.render();
+    var self = this;
+    todoItemListObj.on("change", function() {
+      self.render();
+    });
   },
+
+  render : function () {
+    this.loadTemplate(todoItemListObj, "todoFooterTemplate", this.$el);
+  },
+
   onCompletedClick: function() {
     console.log("todo");
   },

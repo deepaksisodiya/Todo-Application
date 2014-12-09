@@ -37,9 +37,9 @@
 
     <script type="text/html" id="todoFooterTemplate">
 
-        <label>All</label>
-        <label id="completed">Completed</label>
-        <label>Remaining</label>
+        <label>All( <%= obj.completedCount + obj.incompletedCount %>)</label>
+        <label id="completed">Completed(<%= obj.completedCount  %>)</label>
+        <label>Remaining(<%= obj.incompletedCount  %>)</label>
         <label id="removeAll">RemoveAll</label>
 
     </script>
@@ -58,7 +58,7 @@
 </footer>
 
 
-<script src="src/js/common.js"></script>
+<script src="src/js/BaseView.js"></script>
 <script src="src/js/todoItem.js"></script>
 <script src="src/js/todoItemList.js"></script>
 <script src="src/js/todoView.js"></script>

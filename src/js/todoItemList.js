@@ -18,7 +18,7 @@ app.todoItemList = BaseModel.extend({
   },
   removeTodo: function(index) {
     var removedTodo = this.todosArray.splice(index, 1);
-    if (removedTodo.completed) {
+    if (removedTodo[0].completed) {
       this.completedCount = this.completedCount - 1;
     } else {
       this.incompletedCount = this.incompletedCount - 1;
