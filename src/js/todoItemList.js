@@ -29,6 +29,7 @@ app.todoItemList = BaseModel.extend({
     this.todosArray = [];
     this.completedCount = 0;
     this.incompletedCount = 0;
+    this.trigger("change");
   },
   markComplete: function(index) {
     if (this.todosArray[index].isComplete() === false) {

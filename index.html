@@ -24,7 +24,8 @@
 
             <div>
                 <input <% if(item.completed){%>checked<% }%> data-index="<%=index%>" type="checkbox" class="todoCheckBox">
-                <label <% if(item.completed){%> class="completed" <% }%> > <%= item.title %>
+                <label <% if(item.completed){%> class="completed"
+                <% }%> > <%= item.title %>
                     <% if(item.completed){%>✓<% }%>
                 </label>
                 <button data-index="<%=index%>" id="remove">x</button>
@@ -39,7 +40,7 @@
         <label>All</label>
         <label id="completed">Completed</label>
         <label>Remaining</label>
-        <label>RemoveAll</label>
+        <label id="removeAll">RemoveAll</label>
 
     </script>
 

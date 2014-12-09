@@ -6,7 +6,8 @@
 app.todoFooterView = BaseView.extend({
 
   events: {
-    "click #completed": "onCompletedClick"
+    "click #completed": "onCompletedClick",
+    "click #removeAll": "onRemoveAllClick"
   },
   initialize: function($el) {
     this.$el = $el;
@@ -15,6 +16,10 @@ app.todoFooterView = BaseView.extend({
   },
   onCompletedClick: function() {
     console.log("todo");
+  },
+
+  onRemoveAllClick :function() {
+    todoItemListObj.removeAllTodo();
   }
 
 });
