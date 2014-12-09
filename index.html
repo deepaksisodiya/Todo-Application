@@ -41,9 +41,9 @@
 
     <script type="text/html" id="todoFooterTemplate">
 
-        <label id="all">All( <%= obj.completedCount + obj.incompletedCount %>)</label>
-        <label id="completed">Completed(<%= obj.completedCount  %>)</label>
-        <label id="incomplete">Remaining(<%= obj.incompletedCount  %>)</label>
+        <a href="#all" class="removeUnderLine">All( <%= obj.completedCount + obj.incompletedCount %>)</a>
+        <a href="#completed" class="removeUnderLine">Completed(<%= obj.completedCount  %>)</a>
+        <a href="#incompleted" class="removeUnderLine">Remaining(<%= obj.incompletedCount  %>)</a>
         <label id="removeAll">RemoveAll</label>
 
     </script>

@@ -1,3 +1,7 @@
 .completed {
     color: #cc0000;
 }
+
+.removeUnderLine {
+    text-decoration: none;
+}

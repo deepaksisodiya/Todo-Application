@@ -19,8 +19,8 @@ app.todoListView = BaseView.extend({
     todoItemListObj.on("change", function() {
       self.render();
     });
-    $.on("filterTodos", function(e, mode){
-      self.mode = mode;
+    $(window).on("hashchange", function (e) {
+      self.mode = location.hash.slice(1);
       self.render();
     });
   },
